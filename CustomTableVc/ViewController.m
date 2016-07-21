@@ -19,7 +19,7 @@
 }
 
 // 点击一下试试
-- (IBAction)btnClick:(UIButton *)sender {
+- (IBAction)buttonClick:(UIButton *)sender {
     Demo1ViewController *demo1 = [[Demo1ViewController alloc] init];
     [self presentViewController:demo1 animated:YES completion:nil];
 }

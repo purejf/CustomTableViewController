@@ -1,0 +1,122 @@
+//
+//  XRBaseTableViewController.h
+//  Charles
+//
+//  Created by Charles on 16/7/16.
+//  Copyright © 2016年 Charles. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+
+/**
+ *  弱指针
+ */
+#define WeakSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+@class XRBaseTableView, XRBaseTableViewCell;
+
+typedef void(^TableVcCellSelectedHandle)(XRBaseTableViewCell *cell, NSIndexPath *indexPath);
+
+typedef NS_ENUM(NSUInteger, XRBaseTableVcRefreshType) {
+    /** 无法刷新*/
+    XRBaseTableVcRefreshTypeNone = 0,
+    /** 只能刷新*/
+    XRBaseTableVcRefreshTypeOnlyCanRefresh,
+    /** 只能上拉加载*/
+    XRBaseTableVcRefreshTypeOnlyCanLoadMore,
+    /** 能刷新*/
+    XRBaseTableVcRefreshTypeRefreshAndLoadMore
+};
+@class XRBaseTableViewController;
+
+@protocol XRBaseTableViewControllerDelegate <NSObject>
+- (void)baseTableViewController:(XRBaseTableViewController *)controller didSelectCellAtIndexPath:(NSIndexPath *)indexPath;
+@end
+
+@interface XRBaseTableViewController : UIViewController
+
+@property (nonatomic, weak) id <XRBaseTableViewControllerDelegate> delegate;
+
+/** 表视图*/
+@property (nonatomic, weak) XRBaseTableView *tableView;
+
+/** 表视图偏移*/
+@property (nonatomic, assign) UIEdgeInsets tableEdgeInset;
+
+/** 分割线颜色*/
+@property (nonatomic, assign) UIColor *sepLineColor;
+
+/** 数据源数量*/
+@property (nonatomic, strong) NSMutableArray *dataArray;
+
+/** 加载刷新类型*/
+@property (nonatomic, assign) XRBaseTableVcRefreshType refreshType;
+
+/** 是否需要系统的cell的分割线*/
+@property (nonatomic, assign) BOOL needCellSepLine;
+
+/** 刷新数据*/
+- (void)xr_reloadData;
+
+/** 开始下拉*/
+- (void)xr_beginRefresh;
+
+/** 停止刷新*/
+- (void)xr_endRefresh;
+
+/** 停止上拉加载*/
+- (void)xr_endLoadMore;
+
+/** 隐藏刷新*/
+- (void)xr_hiddenRrefresh;
+
+/** 隐藏上拉加载*/
+- (void)xr_hiddenLoadMore;
+
+/** 提示没有更多信息*/
+- (void)xr_noticeNoMoreData;
+
+/** 是否在下拉刷新*/
+@property (nonatomic, assign, readonly) BOOL isHeaderRefreshing;
+
+/** 是否在上拉加载*/
+@property (nonatomic, assign, readonly) BOOL isFooterRefreshing;
+
+#pragma mark - 子类去重写
+/** 分组数量*/
+- (NSInteger)xr_numberOfSections;
+
+/** 某个分组的cell数量*/
+- (NSInteger)xr_numberOfRowsInSection:(NSInteger)section;
+
+/** 某行的cell*/
+- (XRBaseTableViewCell *)xr_cellAtIndexPath:(NSIndexPath *)indexPath;
+
+/** 点击某行*/
+- (void)xr_didSelectCellWithHandle:(TableVcCellSelectedHandle)handle;
+
+/** 某行行高*/
+- (CGFloat)xr_cellheightAtIndexPath:(NSIndexPath *)indexPath;
+
+/** 某个组头*/
+- (UIView *)xr_headerAtSection:(NSInteger)section;
+
+/** 某个组尾*/
+- (UIView *)xr_footerAtSection:(NSInteger)section;
+
+/** 某个组头高度*/
+- (CGFloat)xr_sectionHeaderHeightAtSection:(NSInteger)section;
+
+/** 某个组尾高度*/
+- (CGFloat)xr_sectionFooterHeaderAtSection:(NSInteger)section;
+
+/** 分割线偏移*/
+- (UIEdgeInsets)xr_sepEdgeInsetsAtIndexPath:(NSIndexPath *)indexPath;
+
+#pragma mark - 子类去继承
+/** 刷新方法*/
+- (void)xr_refresh;
+
+/** 上拉加载方法*/
+- (void)xr_loadMore;
+@end
