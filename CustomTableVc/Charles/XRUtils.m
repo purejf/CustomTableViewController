@@ -11,10 +11,6 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <AVFoundation/AVFoundation.h>
 
-/**
- *  弱指针
- */
-#define WeakSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 @implementation XRUtils
 
 + (NSInteger)totalDataCountForScrollView:(UIScrollView *)scrollView {

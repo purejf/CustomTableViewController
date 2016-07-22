@@ -7,12 +7,8 @@
 //
 
 #import "XRBaseTableView.h"
+#import "XRUtils.h"
 
-
-/**
- *  弱指针
- */
-#define WeakSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 @implementation XRBaseTableView
 
 - (instancetype)init {

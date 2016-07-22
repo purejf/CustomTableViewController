@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		569E5F531D40E4D3000D8B80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 569E5F521D40E4D3000D8B80 /* main.m */; };
 		569E5F561D40E4D3000D8B80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 569E5F551D40E4D3000D8B80 /* AppDelegate.m */; };
 		569E5F5C1D40E4D4000D8B80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 569E5F5A1D40E4D4000D8B80 /* Main.storyboard */; };
 		569E5F5E1D40E4D4000D8B80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 569E5F5D1D40E4D4000D8B80 /* Assets.xcassets */; };
@@ -57,10 +56,10 @@
 		569E60141D40E501000D8B80 /* XRSlideOperationViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 569E5FE11D40E501000D8B80 /* XRSlideOperationViewCell.m */; };
 		569E60151D40E501000D8B80 /* XRUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 569E5FE31D40E501000D8B80 /* XRUtils.m */; };
 		569E60161D40E501000D8B80 /* Demo1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 569E5FE51D40E501000D8B80 /* Demo1ViewController.m */; };
-		569E60171D40E501000D8B80 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 569E5FE61D40E501000D8B80 /* Info.plist */; };
-		569E60181D40E501000D8B80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 569E5FE71D40E501000D8B80 /* main.m */; };
 		569E60191D40E501000D8B80 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 569E5FE91D40E501000D8B80 /* ViewController.m */; };
 		569E601A1D40E501000D8B80 /* XRSlideTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 569E5FEB1D40E501000D8B80 /* XRSlideTestCell.m */; };
+		569E60EA1D41B4D9000D8B80 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 569E60E91D41B4D9000D8B80 /* Info.plist */; };
+		569E60EC1D41B4E8000D8B80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 569E60EB1D41B4E8000D8B80 /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,13 +81,11 @@
 
 /* Begin PBXFileReference section */
 		569E5F4E1D40E4D3000D8B80 /* CustomTableVc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomTableVc.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		569E5F521D40E4D3000D8B80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		569E5F541D40E4D3000D8B80 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		569E5F551D40E4D3000D8B80 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		569E5F5B1D40E4D4000D8B80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		569E5F5D1D40E4D4000D8B80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		569E5F601D40E4D4000D8B80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		569E5F621D40E4D4000D8B80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		569E5F671D40E4D4000D8B80 /* CustomTableVcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustomTableVcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		569E5F6B1D40E4D4000D8B80 /* CustomTableVcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomTableVcTests.m; sourceTree = "<group>"; };
 		569E5F6D1D40E4D4000D8B80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -182,12 +179,12 @@
 		569E5FE31D40E501000D8B80 /* XRUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XRUtils.m; sourceTree = "<group>"; };
 		569E5FE41D40E501000D8B80 /* Demo1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo1ViewController.h; sourceTree = "<group>"; };
 		569E5FE51D40E501000D8B80 /* Demo1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Demo1ViewController.m; sourceTree = "<group>"; };
-		569E5FE61D40E501000D8B80 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		569E5FE71D40E501000D8B80 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		569E5FE81D40E501000D8B80 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		569E5FE91D40E501000D8B80 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		569E5FEA1D40E501000D8B80 /* XRSlideTestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XRSlideTestCell.h; sourceTree = "<group>"; };
 		569E5FEB1D40E501000D8B80 /* XRSlideTestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XRSlideTestCell.m; sourceTree = "<group>"; };
+		569E60E91D41B4D9000D8B80 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		569E60EB1D41B4E8000D8B80 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,8 +238,6 @@
 				569E5F841D40E501000D8B80 /* Charles */,
 				569E5FE41D40E501000D8B80 /* Demo1ViewController.h */,
 				569E5FE51D40E501000D8B80 /* Demo1ViewController.m */,
-				569E5FE61D40E501000D8B80 /* Info.plist */,
-				569E5FE71D40E501000D8B80 /* main.m */,
 				569E5FE81D40E501000D8B80 /* ViewController.h */,
 				569E5FE91D40E501000D8B80 /* ViewController.m */,
 				569E5FEA1D40E501000D8B80 /* XRSlideTestCell.h */,
@@ -252,7 +247,6 @@
 				569E5F5A1D40E4D4000D8B80 /* Main.storyboard */,
 				569E5F5D1D40E4D4000D8B80 /* Assets.xcassets */,
 				569E5F5F1D40E4D4000D8B80 /* LaunchScreen.storyboard */,
-				569E5F621D40E4D4000D8B80 /* Info.plist */,
 				569E5F511D40E4D3000D8B80 /* Supporting Files */,
 			);
 			path = CustomTableVc;
@@ -261,7 +255,8 @@
 		569E5F511D40E4D3000D8B80 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				569E5F521D40E4D3000D8B80 /* main.m */,
+				569E60EB1D41B4E8000D8B80 /* main.m */,
+				569E60E91D41B4D9000D8B80 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -565,7 +560,7 @@
 				569E5FEC1D40E501000D8B80 /* LICENSE in Resources */,
 				569E5F5C1D40E4D4000D8B80 /* Main.storyboard in Resources */,
 				569E5FF71D40E501000D8B80 /* LICENSE in Resources */,
-				569E60171D40E501000D8B80 /* Info.plist in Resources */,
+				569E60EA1D41B4D9000D8B80 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,7 +612,6 @@
 				569E60111D40E501000D8B80 /* XRBaseTableView.m in Sources */,
 				569E60031D40E501000D8B80 /* MJRefreshGifHeader.m in Sources */,
 				569E60081D40E501000D8B80 /* NSBundle+MJRefresh.m in Sources */,
-				569E60181D40E501000D8B80 /* main.m in Sources */,
 				569E5FED1D40E501000D8B80 /* MASCompositeConstraint.m in Sources */,
 				569E5FF61D40E501000D8B80 /* README.md in Sources */,
 				569E5FFF1D40E501000D8B80 /* MJRefreshAutoStateFooter.m in Sources */,
@@ -631,9 +625,9 @@
 				569E5FF81D40E501000D8B80 /* MJRefreshAutoFooter.m in Sources */,
 				569E60191D40E501000D8B80 /* ViewController.m in Sources */,
 				569E5FF01D40E501000D8B80 /* MASLayoutConstraint.m in Sources */,
-				569E5F531D40E4D3000D8B80 /* main.m in Sources */,
 				569E5FF21D40E501000D8B80 /* MASViewConstraint.m in Sources */,
 				569E60131D40E501000D8B80 /* XRBaseTableViewController.m in Sources */,
+				569E60EC1D41B4E8000D8B80 /* main.m in Sources */,
 				569E60091D40E501000D8B80 /* UIScrollView+MJExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -775,6 +769,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = CustomTableVc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Charles.CustomTableVc;
@@ -786,6 +781,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = CustomTableVc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Charles.CustomTableVc;
@@ -860,6 +856,7 @@
 				569E5F7D1D40E4D4000D8B80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		569E5F7E1D40E4D4000D8B80 /* Build configuration list for PBXNativeTarget "CustomTableVcTests" */ = {
 			isa = XCConfigurationList;
@@ -868,6 +865,7 @@
 				569E5F801D40E4D4000D8B80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		569E5F811D40E4D4000D8B80 /* Build configuration list for PBXNativeTarget "CustomTableVcUITests" */ = {
 			isa = XCConfigurationList;
@@ -876,6 +874,7 @@
 				569E5F831D40E4D4000D8B80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

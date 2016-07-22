@@ -11,6 +11,10 @@ typedef void(^XRRefreshAndLoadMoreHandle)(void);
 #import <Foundation/Foundation.h> 
 #import <UIKit/UIKit.h>
 
+/**
+ *  弱指针
+ */
+#define WeakSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 @interface XRUtils : NSObject
 
 /** 开始下拉刷新 */

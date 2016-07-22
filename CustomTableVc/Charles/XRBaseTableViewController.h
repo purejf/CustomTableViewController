@@ -8,11 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-
-/**
- *  弱指针
- */
-#define WeakSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+ 
 @class XRBaseTableView, XRBaseTableViewCell;
 
 typedef void(^TableVcCellSelectedHandle)(XRBaseTableViewCell *cell, NSIndexPath *indexPath);

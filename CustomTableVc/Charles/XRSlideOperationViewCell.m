@@ -9,6 +9,7 @@
 #import "XRSlideOperationViewCell.h"
 #import "UIView+XRTap.h"
 #import "UIView+Frame.h"
+#import "XRUtils.h"
 
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
@@ -19,10 +20,6 @@
 
 @implementation XRSlideOperationViewCell
 
-/**
- *  弱指针
- */
-#define WeakSelf(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 #define kAnimatedDuration 0.3f
 
 - (void)setDataSource:(id<XRSlideOperationViewCellDataSource>)dataSource {
