@@ -73,7 +73,7 @@ const char XRBaseTableVcNavLeftItemHandleKey;
 }
 
 /** 设置导航栏左边的item*/
-- (void)xr_setUpNavLeftItemTitle:(NSString *)itemTitle handle:(void(^)(NSString *rightItemTitle))handle {
+- (void)xr_setUpNavLeftItemTitle:(NSString *)itemTitle handle:(void(^)(NSString *leftItemTitle))handle {
     [self xr_setUpNavItemTitle:itemTitle handle:handle leftFlag:YES];
 }
 

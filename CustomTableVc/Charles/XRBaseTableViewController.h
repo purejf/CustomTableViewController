@@ -34,7 +34,7 @@ typedef NS_ENUM(NSUInteger, XRBaseTableVcRefreshType) {
 - (void)xr_setUpNavRightItemTitle:(NSString *)itemTitle handle:(void(^)(NSString *rightItemTitle))handle;
 
 /** 设置导航栏左边的item*/
-- (void)xr_setUpNavLeftItemTitle:(NSString *)itemTitle handle:(void(^)(NSString *rightItemTitle))handle;
+- (void)xr_setUpNavLeftItemTitle:(NSString *)itemTitle handle:(void(^)(NSString *leftItemTitle))handle;
 
 /** 监听通知*/
 - (void)xr_observeNotiWithNotiName:(NSString *)notiName action:(SEL)action;
