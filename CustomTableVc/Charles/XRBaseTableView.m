@@ -55,7 +55,7 @@
         [self endUpdates];
     }
 }
-- (UITableViewCell *)xr_cellAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)xr_cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (!indexPath) return nil;
     NSInteger sectionNumber = self.numberOfSections;
     NSInteger section = indexPath.section;

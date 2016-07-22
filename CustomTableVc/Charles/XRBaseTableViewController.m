@@ -10,17 +10,25 @@
 #import "XRBaseTableViewCell.h"
 #import "XRBaseTableView.h"
 #import "XRBaseTableHeaderFooterView.h"
+#import <objc/runtime.h>
 #import "XRUtils.h"
 #import "Masonry.h"
 
+const char XRBaseTableVcNavRightItemHandleKey;
+const char XRBaseTableVcNavLeftItemHandleKey;
+
 @interface XRBaseTableViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, copy) TableVcCellSelectedHandle handle;
+@property (nonatomic, copy) XRTableVcCellSelectedHandle handle;
 @end
 
 @implementation XRBaseTableViewController
 
 @synthesize needCellSepLine = _needCellSepLine;
 @synthesize sepLineColor = _sepLineColor;
+@synthesize navItemTitle = _navItemTitle;
+@synthesize navRightItem = _navRightItem;
+@synthesize hiddenStatusBar = _hiddenStatusBar;
+@synthesize barStyle = _barStyle;
 
 - (NSMutableArray *)dataArray {
     if (!_dataArray) {
@@ -51,16 +59,63 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
-
+    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     
     [self.tableView reloadData];
     
 }
 
+/** 设置导航栏右边的item*/
+- (void)xr_setUpNavRightItemTitle:(NSString *)itemTitle handle:(void(^)(NSString *rightItemTitle))handle {
+    [self xr_setUpNavItemTitle:itemTitle handle:handle leftFlag:NO];
+}
+
+/** 设置导航栏左边的item*/
+- (void)xr_setUpNavLeftItemTitle:(NSString *)itemTitle handle:(void(^)(NSString *rightItemTitle))handle {
+    [self xr_setUpNavItemTitle:itemTitle handle:handle leftFlag:YES];
+}
+
+- (void)xr_navItemHandle:(UIBarButtonItem *)item {
+    void (^handle)(NSString *) = objc_getAssociatedObject(self, &XRBaseTableVcNavRightItemHandleKey);
+    if (handle) {
+        handle(item.title);
+    }
+}
+
+- (void)xr_setUpNavItemTitle:(NSString *)itemTitle handle:(void(^)(NSString *itemTitle))handle leftFlag:(BOOL)leftFlag {
+    if (itemTitle.length == 0 || !handle) {
+        if (itemTitle == nil) {
+            itemTitle = @"";
+        } else if ([itemTitle isKindOfClass:[NSNull class]]) {
+            itemTitle = @"";
+        }
+        if (leftFlag) {
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:itemTitle style:UIBarButtonItemStylePlain target:nil action:nil];
+        } else {
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:itemTitle style:UIBarButtonItemStylePlain target:nil action:nil];
+        }
+    } else {
+        if (leftFlag) {
+            objc_setAssociatedObject(self, &XRBaseTableVcNavLeftItemHandleKey, handle, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:itemTitle style:UIBarButtonItemStylePlain target:self action:@selector(xr_navItemHandle:)];
+        } else {
+            objc_setAssociatedObject(self, &XRBaseTableVcNavRightItemHandleKey, handle, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:itemTitle style:UIBarButtonItemStylePlain target:self action:@selector(xr_navItemHandle:)];
+        }
+    }
+    
+}
+
+/** 监听通知*/
+- (void)xr_observeNotiWithNotiName:(NSString *)notiName action:(SEL)action {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:action name:notiName object:nil];
+}
+
+/** 设置刷新类型*/
 - (void)setRefreshType:(XRBaseTableVcRefreshType)refreshType {
     _refreshType = refreshType;
-    
     switch (self.refreshType) {
         case XRBaseTableVcRefreshTypeNone: // 没有刷新
             break ;
@@ -82,8 +137,58 @@
     }
 }
 
+/** 导航栏标题*/
+- (void)setNavItemTitle:(NSString *)navItemTitle {
+    if ([navItemTitle isKindOfClass:[NSString class]] == NO) return ;
+    if ([navItemTitle isEqualToString:_navItemTitle]) return ;
+    _navItemTitle = navItemTitle.copy;
+    self.navigationItem.title = navItemTitle;
+}
+
+- (NSString *)navItemTitle {
+    return self.navigationItem.title;
+}
+
+/** statusBar是否隐藏*/
+- (void)setHiddenStatusBar:(BOOL)hiddenStatusBar {
+    _hiddenStatusBar = hiddenStatusBar;
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+- (BOOL)hiddenStatusBar {
+    return _hiddenStatusBar;
+}
+
+- (void)setBarStyle:(UIStatusBarStyle)barStyle {
+    if (_barStyle == barStyle) return ;
+    _barStyle = barStyle;
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return self.hiddenStatusBar;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return self.barStyle;
+}
+
+/** 右边item*/
+- (void)setNavRightItem:(UIBarButtonItem *)navRightItem {
+    if ([navRightItem isKindOfClass:[UIBarButtonItem class]] == NO) {
+        return ;
+    }
+    _navRightItem = navRightItem;
+    self.navigationItem.rightBarButtonItem = navRightItem;
+}
+
+- (UIBarButtonItem *)navRightItem {
+    return self.navigationItem.rightBarButtonItem;
+}
+
 /** 需要系统分割线*/
 - (void)setNeedCellSepLine:(BOOL)needCellSepLine {
+    if (_needCellSepLine == needCellSepLine) return ;
     _needCellSepLine = needCellSepLine;
     self.tableView.separatorStyle = needCellSepLine ? UITableViewCellSeparatorStyleSingleLine : UITableViewCellSeparatorStyleNone;
 }
@@ -306,7 +411,7 @@
 
 - (CGFloat)xr_cellheightAtIndexPath:(NSIndexPath *)indexPath { return 0; }
 
-- (void)xr_didSelectCellWithHandle:(TableVcCellSelectedHandle)handle { _handle = handle; }
+- (void)xr_didSelectCellWithHandle:(XRTableVcCellSelectedHandle)handle { _handle = handle; }
 
 - (UIView *)xr_headerAtSection:(NSInteger)section { return [XRBaseTableHeaderFooterView headerFooterViewWithTableView:self.tableView]; }
 
@@ -318,4 +423,7 @@
 
 - (UIEdgeInsets)xr_sepEdgeInsetsAtIndexPath:(NSIndexPath *)indexPath { return UIEdgeInsetsMake(0, 15, 0, 0); }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

@@ -24,7 +24,7 @@ typedef NS_ENUM(NSInteger, XRBaseTableViewRowAnimation) {
 
 - (void)xr_updateWithUpdateBlock:(void(^)(XRBaseTableView *tableView ))updateBlock;
 
-- (UITableViewCell *)xr_cellAtIndexPath:(NSIndexPath *)indexPath;
+- (UITableViewCell *)xr_cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 /** 注册普通的UITableViewCell*/
 - (void)xr_registerCellClass:(Class)cellClass identifier:(NSString *)identifier;

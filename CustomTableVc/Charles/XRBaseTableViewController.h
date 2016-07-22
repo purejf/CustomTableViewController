@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
- 
 @class XRBaseTableView, XRBaseTableViewCell;
 
-typedef void(^TableVcCellSelectedHandle)(XRBaseTableViewCell *cell, NSIndexPath *indexPath);
+typedef void(^XRTableVcCellSelectedHandle)(XRBaseTableViewCell *cell, NSIndexPath *indexPath);
 
 typedef NS_ENUM(NSUInteger, XRBaseTableVcRefreshType) {
     /** 无法刷新*/
@@ -31,7 +30,29 @@ typedef NS_ENUM(NSUInteger, XRBaseTableVcRefreshType) {
 
 @interface XRBaseTableViewController : UIViewController
 
+/** 设置导航栏右边的item*/
+- (void)xr_setUpNavRightItemTitle:(NSString *)itemTitle handle:(void(^)(NSString *rightItemTitle))handle;
+
+/** 设置导航栏左边的item*/
+- (void)xr_setUpNavLeftItemTitle:(NSString *)itemTitle handle:(void(^)(NSString *rightItemTitle))handle;
+
+/** 监听通知*/
+- (void)xr_observeNotiWithNotiName:(NSString *)notiName action:(SEL)action;
+
+/** 隐藏statusBar*/
+@property (nonatomic, assign) BOOL hiddenStatusBar;
+
+/** statusBar风格*/
+@property (nonatomic, assign) UIStatusBarStyle barStyle;
+
+/** 导航右边Item*/
+@property (nonatomic, strong) UIBarButtonItem *navRightItem;
+
+/** 点击某个cell的代理，子类可以继承协议继续扩充*/
 @property (nonatomic, weak) id <XRBaseTableViewControllerDelegate> delegate;
+
+/** 标题*/
+@property (nonatomic, copy) NSString *navItemTitle;
 
 /** 表视图*/
 @property (nonatomic, weak) XRBaseTableView *tableView;
@@ -89,7 +110,7 @@ typedef NS_ENUM(NSUInteger, XRBaseTableVcRefreshType) {
 - (XRBaseTableViewCell *)xr_cellAtIndexPath:(NSIndexPath *)indexPath;
 
 /** 点击某行*/
-- (void)xr_didSelectCellWithHandle:(TableVcCellSelectedHandle)handle;
+- (void)xr_didSelectCellWithHandle:(XRTableVcCellSelectedHandle)handle;
 
 /** 某行行高*/
 - (CGFloat)xr_cellheightAtIndexPath:(NSIndexPath *)indexPath;
